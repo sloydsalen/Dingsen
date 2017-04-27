@@ -3,30 +3,32 @@
 // is running when file opened
 void writeMode(){
   printToDisplay("File:"+String(filename)+"", 0,0);
-  float light = analogRead(inpin);
+  time = (millis()-timeAtStart)/1000.;
   float temp  = dallasGetTemperature();
-  float values[] = {light,temp};
-  printToSerial(values,2);
-  printToDisplay(String(values[0])+" "+String(values[1]), 4,1);
+  
+  // print to Serial
+  Serial.print(String(time)+"\t"); // time
+  Serial.print(String(temp)+"\t"); // temp
+  Serial.println(""); // end line
+  
+  // print to Display
+  // printToDisplay(String(int(10*time)/10.)+"s", 4,1);  not print time to display
+  printToDisplay(String(temp)+" C",4,1);
+  
+  
   if(record){
-    writeToFile(light);
-    writeToFile(temp);
+    // Write to file
+    file.print(String(time)+"\t"); // time
+    file.print(String(temp)+"\t"); // temp
+    file.println(""); // end line
+    
     printToDisplay("[R]", 0,1); 
-    FileEndLine();
   }else{
     printToDisplay("[ ]", 0,1); 
   }
 }
 
 
-
-// ================ SERIAL ======================
-
-void printToSerial(float value[],int n){
-  Serial.print(String(value[0])+"\t");
-  Serial.print(String(value[1])+"\t");
-  Serial.println("");
-}
 
 
 

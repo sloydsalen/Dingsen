@@ -1,4 +1,9 @@
 
+void initializeButtonPins(){
+  for (int i = 0; i < numberOfButtons; i++) {
+    pinMode(buttons[i], INPUT);
+  }
+}
 
 void keypad(bool keysPressed[]){
   if(!isOpen){ // if file is NOT open

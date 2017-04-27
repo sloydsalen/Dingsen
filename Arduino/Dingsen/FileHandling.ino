@@ -27,6 +27,7 @@ void removeFile(){
 }
 
 void openFile(){
+  Serial.println("FILE:"+filename);
   file = SD.open(filename, FILE_WRITE); 
   file.println("--");
   file.print("GROUP: ");
@@ -36,27 +37,21 @@ void openFile(){
   printToDisplay("Opening file", 0,1);
   delay(500); // Wait 500ms after file chosen
   lcd.clear();
+  timeAtStart = millis();
 }
 
 
 
 void closeFile(File file){
+  Serial.println("CLOSING");
   file.close();
   printToDisplay("Closing file", 0,1);
   isOpen = false;
-  record = false;
   delay(500); // Wait 500ms after file chosen
   lcd.clear();
 }
 
 
-void writeToFile(float value){
-  file.print(String(value)+"\t"); // separate with tab
-}
-
-void FileEndLine(){
-  file.println("");
-}
 
 void emptySDdirectory(String directory){
   lcd.clear();
