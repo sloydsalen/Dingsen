@@ -6,4 +6,4 @@ The repository(repo) is sepaated in to sections based on the used codeíng-langu
 Changes to the repo-structure should **not** be done without updating all other dependencies
 
 ### Issue tracking and project updates
-Users and developers are strongly encouraged to use the *Issues-* or *Projects*-feature in GitHub to submit issues, suggestions for furture work etc.
+Users and developers are strongly encouraged to use the *Issues-* or *Projects*-feature in GitHub to submit issues or suggestions for furture work etc.
