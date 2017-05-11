@@ -7,5 +7,3 @@ Changes to the repo-structure should **not** be done without updating all other 
 
 ### Issue tracking and project updates
 Users and developers are strongly encouraged to use the **_Issues_-** or **_Projects_**-feature in GitHub to submit issues or suggestions for furture work etc.
-
-## TEST
