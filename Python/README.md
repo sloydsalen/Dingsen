@@ -1,5 +1,5 @@
 # Dingsen
-`Dingsen.py` is a python class intended to retrieve data from an Arduino running the code [Arduino/Dingsen](../Arduino/Dingsen) using a serial port. Depending on the usage, the data can be written directly to a `.txt` file, live-plotted, analyzed after the experiment without writing to file, ... the possibilities are (almost) limitless!
+`dingsen.py` is a python class intended to retrieve data from an Arduino running the code [Arduino/Dingsen](../Arduino/Dingsen) using a serial port. Depending on the usage, the data can be written directly to a `.txt` file, live-plotted, analyzed after the experiment without writing to file, ... the possibilities are (almost) limitless!
 
 ## Direct usage
 
@@ -25,9 +25,9 @@ in the `terminal`. If connected via USB, pick one of the serial port addresses w
 
 
 ## On import
-Importing the `Dingsen.py` file is done just like any other import in Python, namely writing
+Importing the `dingsen.py` file is done just like any other import in Python, namely writing
 ```python
-import Dingsen.py
+import dingsen.py
 ```
 in the top of your script. The device is then initialized by,
 ```
@@ -39,7 +39,7 @@ Once constructed, the program needs to know where to reach out for the device. T
 
 Here is an example of a minimal program:
 ```python
-import Dingsen.py
+import dingsen.py
 dings = Dingsen()
 assert dings.openPort("/dev/cu.usbmodem1421")
 dings.writeAndLiveplot("myTempFile.txt")    
