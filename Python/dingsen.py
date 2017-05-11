@@ -2,7 +2,7 @@ import serial # install with hombrew: sudo pip install pyserial
 import subprocess
 
 class Dingsen:
-    def __init__(self,inputs):
+    def __init__(self,inputs=2): #if, for some reason, other numer of inputs desired
         self.inputs = inputs
         self.active = True
         self.values = [[] for i in range(inputs)] # make [[],[],..,[]]
