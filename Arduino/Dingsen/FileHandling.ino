@@ -29,10 +29,7 @@ void removeFile(){
 void openFile(){
   Serial.println("FILE:"+filename);
   file = SD.open(filename, FILE_WRITE); 
-  file.println("--");
-  file.print("GROUP: ");
-  file.println(group);
-  file.println("--");
+  file.println(filename);
   isOpen = true;
   printToDisplay("Opening file", 0,1);
   delay(500); // Wait 500ms after file chosen
