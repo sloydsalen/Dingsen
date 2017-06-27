@@ -24,3 +24,6 @@ Users and developers are strongly encouraged to use the **_Issues_-** or **_Proj
 | Breadboard | 1 |
 | SD-card reader | 1 |
 | Power switch | 1 |
+
+## Fritzing sketch
+![Fritzing sketch](/Dingsen.png)
