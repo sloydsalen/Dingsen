@@ -24,6 +24,15 @@ void keypad(bool keysPressed[]){
     }
     
     if( keysPressed[deleteFilesButton]){ // FLUSH SD CARD
+      lcd.clear();
+      printToDisplay("DELETE? Press",0,0);
+      printToDisplay("REC and DELETE",0,1);
+      delay(2000);
+      lcd.clear();
+      // emptySDdirectory("/");
+    }
+
+    if( keysPressed[deleteFilesButton] && keysPressed[recordButton]){
       emptySDdirectory("/");
     }
    
