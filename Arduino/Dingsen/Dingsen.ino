@@ -20,8 +20,8 @@ LiquidCrystal_I2C lcd(0x27, 16, 2); // Set the LCD I2C address
 // define button pins
 int numberOfButtons   = 6;
 int buttons[]         = {7, 6, 5, 4, 3, 2};
-int upButton          = 0;
-int downButton        = 1;
+int downButton        = 0;
+int upButton          = 1;
 int recordButton      = 2;
 int printFilesButton  = 3;
 int deleteFilesButton = 4;
@@ -35,7 +35,7 @@ String filenamePrefix = "group_data_";
 String filename       = "Undetermined.txt";
 bool isOpen           = false;
 bool tryingToOpen     = false;
-bool record           = true;
+bool record           = false;
 File file;
 
 // TIME
@@ -47,7 +47,8 @@ unsigned long timeAtStart;
 int dallasPin = 8;
 int bitResolution[] = {9, 10, 11, 12, 13}; // low: fast, inaccurate      high: slow, accurate
         // Resolutions ---  9bit: 0.5 deg      10bit: 0.25 deg      11bit: 0.125 deg    12bit: 0.0625 deg
-int bitResolutionChoice = 3; // index
+        // Resolutions ---  9bit: ***          10bit: 0.23 sec      11bit: 0.40 sec     12bit: 0.75 sec
+int bitResolutionChoice = 2; // index
 OneWire oneWire(dallasPin);
 DallasTemperature dallas(&oneWire);
 
