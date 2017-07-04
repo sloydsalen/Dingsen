@@ -1,26 +1,23 @@
 
 void chooseFile(){
-  filename = "group"+String(group)+".txt"; // update potential filename
-  if(tryingToOpen){// Q: delete pre-existing file
-    printToDisplay("Delete existing", 0,0);
-    printToDisplay("file?", 0,1);
+  filename = "file"+String(group)+".txt"; // update potential filename
+  if(fileExists&&tryingToOpen){// Q: delete pre-existing file
+    lcd.clear();
+    printToDisplay("Stupid choice!", 0,0);
+    delay(1000);
+    lcd.clear();
+    tryingToOpen = false;
+  }else if(tryingToOpen){
+    initiateExperiment();
   }else{// choosing file
-    printToDisplay("Choose group:"+String(group), 0,0); 
-    bool fileExists = SD.exists(filename);
+    printToDisplay("File: "+String(group), 0,0); 
+    fileExists = SD.exists(filename);
     if(fileExists){
-      printToDisplay("Exists", 3,1); 
+      printToDisplay("Exists", 3,1);
     }
   }
 }
 
-
-void handleExistingFile(){
-  if(keysPressed[3]){
-    printToDisplay("!!!!", 4,1); 
-    delay(800);
-    SD.remove(filename);
-  }
-}
 
 void removeFile(){
   SD.remove(filename);
@@ -30,11 +27,36 @@ void openFile(){
   Serial.println("FILE:"+filename);
   file = SD.open(filename, FILE_WRITE); 
   file.println(filename);
+  //printToDisplay("Opening file", 0,1);
+  //delay(500); // Wait 500ms after file chosen
+  //lcd.clear();
+  timeAtStart = millis();
+}
+
+void initiateExperiment(){
   isOpen = true;
-  printToDisplay("Opening file", 0,1);
+  printToDisplay("Initiating", 0,1);
   delay(500); // Wait 500ms after file chosen
   lcd.clear();
-  timeAtStart = millis();
+}
+
+void leaveInitiated(){
+
+  if(record){
+    Serial.println("CLOSING");
+    file.close();
+    
+    printToDisplay("*SAVING DATA*", 0,1);
+    delay(1000); // Wait 1000ms after file chosen
+  }
+  
+  isOpen       = false;
+  tryingToOpen = false;
+  record       = false;
+  
+  printToDisplay("Back to menu", 0,1);
+  delay(500); // Wait 500ms after file chosen
+  lcd.clear();
 }
 
 
@@ -42,9 +64,12 @@ void openFile(){
 void closeFile(File file){
   Serial.println("CLOSING");
   file.close();
-  printToDisplay("Closing file", 0,1);
-  isOpen = false;
-  delay(500); // Wait 500ms after file chosen
+  
+  isOpen       = false;
+  tryingToOpen = false;
+
+  printToDisplay("*SAVING DATA*", 0,1);
+  delay(1000); // Wait 1000ms after file chosen
   lcd.clear();
 }
 
