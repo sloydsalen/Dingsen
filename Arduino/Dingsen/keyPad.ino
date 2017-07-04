@@ -44,12 +44,11 @@ void keypad(bool keysPressed[]){
     }
   }
 
-  
-
   // OPEN/CLOSE BUTTON
   if( keysPressed[openCloseButton]){ 
     if(isOpen){
       closeFile(file);
+      record = false;
     }else{
       openFile();
     }
