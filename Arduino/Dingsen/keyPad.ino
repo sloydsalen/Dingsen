@@ -39,16 +39,17 @@ void keypad(bool keysPressed[]){
   }else{ // if file is open
     if( keysPressed[recordButton]){ // RECORD BUTTON
       record = !record; // toggle record mode
-      delay(200); 
+      delay(200);
       lcd.clear();
     }
   }
+
+  
 
   // OPEN/CLOSE BUTTON
   if( keysPressed[openCloseButton]){ 
     if(isOpen){
       closeFile(file);
-      record = false;
     }else{
       openFile();
     }

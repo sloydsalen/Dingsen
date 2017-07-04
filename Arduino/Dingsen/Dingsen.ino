@@ -35,7 +35,7 @@ String filenamePrefix = "group_data_";
 String filename       = "Undetermined.txt";
 bool isOpen           = false;
 bool tryingToOpen     = false;
-bool record           = true;
+bool record           = false;
 File file;
 
 // TIME
