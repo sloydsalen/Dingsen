@@ -20,8 +20,8 @@ LiquidCrystal_I2C lcd(0x27, 16, 2); // Set the LCD I2C address
 // define button pins
 int numberOfButtons   = 6;
 int buttons[]         = {7, 6, 5, 4, 3, 2};
-int upButton          = 0;
-int downButton        = 1;
+int downButton        = 0;
+int upButton          = 1;
 int recordButton      = 2;
 int printFilesButton  = 3;
 int deleteFilesButton = 4;
