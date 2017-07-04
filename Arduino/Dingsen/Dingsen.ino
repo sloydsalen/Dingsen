@@ -47,6 +47,7 @@ unsigned long timeAtStart;
 int dallasPin = 8;
 int bitResolution[] = {9, 10, 11, 12, 13}; // low: fast, inaccurate      high: slow, accurate
         // Resolutions ---  9bit: 0.5 deg      10bit: 0.25 deg      11bit: 0.125 deg    12bit: 0.0625 deg
+        // Resolutions ---  9bit: ***          10bit: 0.23 sec      11bit: 0.40 sec     12bit: 0.75 sec
 int bitResolutionChoice = 3; // index
 OneWire oneWire(dallasPin);
 DallasTemperature dallas(&oneWire);
