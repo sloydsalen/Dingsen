@@ -6,10 +6,6 @@ void writeMode(){
   time = (millis()-timeAtStart)/1000.;
   float temp  = dallasGetTemperature();
   
-  // print to Serial
-  Serial.print(String(time)+"\t"); // time
-  Serial.print(String(temp)+"\t"); // temp
-  Serial.println(""); // end line
   
   // print to Display
   // printToDisplay(String(int(10*time)/10.)+"s", 4,1);  not print time to display
@@ -17,6 +13,11 @@ void writeMode(){
   
   
   if(record){
+    // print to Serial
+    Serial.print(String(time)+"\t"); // time
+    Serial.print(String(temp)+"\t"); // temp
+    Serial.println(""); // end line
+    
     // Write to file
     file.print(String(time)+"\t"); // time
     file.print(String(temp)+"\t"); // temp
