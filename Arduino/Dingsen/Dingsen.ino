@@ -7,10 +7,11 @@
                                 
 
 // GENERAL
-int loopChoosefileDelay   = 100;
-int loopDelay             = 0;
-int group                 = 1;
-int maxNumGroups          = 100;
+#define loopChoosefileDelay 100
+#define loopDelay 0
+#define maxNumGroups 100
+int group = 1; // choice of group
+
 
 // DISPLAY
 // initialize display
@@ -43,7 +44,6 @@ File file;
 float time;
 unsigned long timeAtStart;
 
-
 // DALLAS
 int dallasPin = 8;
 int bitResolution[] = {9, 10, 11, 12, 13}; // low: fast, inaccurate      high: slow, accurate
@@ -53,6 +53,8 @@ int bitResolutionChoice = 2; // index
 OneWire oneWire(dallasPin);
 DallasTemperature dallas(&oneWire);
 
+// SERIAL COMMUNICATION
+bool recievedMessage = false;
 
 void setup()
 {
@@ -69,27 +71,37 @@ void setup()
 
   // DISPLAY
   initializeDisplay();
+
+  // SERIAL COMMUNICATION
+  considerSerialProcedure();
+  
 }
 
 
 
 void loop()
 {
+  if(recievedMessage){ // IF SIGNAL DETECTED --> Serial Communication procedure 
+    
+    serialResponse();
+    
+  }else{ // IF NO SIGNAL DETECTED --> Manually Operated device
+    
+    // get button activity
+    for (int i = 0; i < numberOfButtons; i++) {
+      keysPressed[i] = digitalRead(buttons[i]) == 1;
+    }
+  
+    // react to keypad events
+    keypad(keysPressed);
+  
+  
+    // HANDLE EVENTS
+    handleEvents();
+   
 
-  // get button activity
-  for (int i = 0; i < numberOfButtons; i++) {
-    keysPressed[i] = digitalRead(buttons[i]) == 1;
+    delay(loopDelay);
   }
-
-  // react to keypad events
-  keypad(keysPressed);
-
-
-  // HANDLE EVENTS
-  handleEvents();
-
-
-  delay(loopDelay);
 }
 
 
@@ -102,6 +114,7 @@ void handleEvents() {
     delay(loopChoosefileDelay);
   }
 }
+
 
 
 

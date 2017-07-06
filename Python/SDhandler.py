@@ -24,6 +24,7 @@ if filename=='defaultFilename.txt':
     print firstline
     filename = firstline[:-2]
 
+
 with open(filename, 'a') as f:
     while True:
         line = SERIAL.readline()

@@ -24,7 +24,7 @@ void keypad(bool keysPressed[]){
     }
 
     if( keysPressed[printFilesButton]){ // PRINT SD CARD CONTENT
-      pushSDdata();
+      pushSDdata(filename);
       printFilesInDirectory("/");
     }
     
@@ -36,7 +36,6 @@ void keypad(bool keysPressed[]){
       lcd.clear();
       // emptySDdirectory("/");
     }
-
     if( keysPressed[deleteFilesButton] && keysPressed[recordButton]){
       emptySDdirectory("/");
     }

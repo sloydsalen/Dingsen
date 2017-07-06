@@ -1,10 +1,10 @@
 
 // For pushing data on chosen file to Serial once pressed
-void pushSDdata(){
+void pushSDdata(String nameOfFile){
   Serial.write("*PUSHING FILE* \n");
-  if(SD.exists(filename)){
-    printToDisplay("Exists", 3,1); 
-    File outfile = SD.open(filename);
+  if(SD.exists(nameOfFile)){
+    //printToDisplay("Exists", 3,1); 
+    File outfile = SD.open(nameOfFile);
     
     while (outfile.available()){
       Serial.write(outfile.read());

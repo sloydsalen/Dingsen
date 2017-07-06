@@ -5,7 +5,7 @@ void writeMode(){
   printToDisplay("File:"+String(filename)+"", 0,0);
   time = (millis()-timeAtStart)/1000.;
   float temp  = dallasGetTemperature();
-  
+
   
   // print to Display
   // printToDisplay(String(int(10*time)/10.)+"s", 4,1);  not print time to display
