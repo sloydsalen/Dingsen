@@ -30,18 +30,19 @@ void keypad(bool keysPressed[]){
     
     if( keysPressed[deleteFilesButton]){ // EMPTY SD CARD
       lcd.clear();
-      printToDisplay("DELETE? Press",0,0);
-      printToDisplay("REC and DELETE",0,1);
+      printToDisplay(F("DELETE? Press"),0,0);
+      printToDisplay(F("REC and DELETE"),0,1);
       delay(2000);
       lcd.clear();
       // emptySDdirectory("/");
     }
+
     if( keysPressed[deleteFilesButton] && keysPressed[recordButton]){
       emptySDdirectory("/");
     }
    
   }else{ // if file is open
-    file.flush(); // Ensure written data is stored in file
+    //file.flush(); // Ensure written data is stored in file
     if( keysPressed[recordButton]){ // RECORD BUTTON
       if(record){ // about to close
         closeFile(file);

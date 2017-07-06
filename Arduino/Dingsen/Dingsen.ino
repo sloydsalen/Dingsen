@@ -19,19 +19,19 @@ LiquidCrystal_I2C lcd(0x27, 16, 2); // Set the LCD I2C address
 
 // BUTTONS
 // define button pins
-int numberOfButtons   = 6;
-int buttons[]         = {7, 6, 5, 4, 3, 2};
-int downButton        = 0;
-int upButton          = 1;
-int recordButton      = 2;
-int printFilesButton  = 3;
-int deleteFilesButton = 4;
-int openCloseButton   = 5;
+unsigned int numberOfButtons   = 6;
+unsigned int buttons[]         = {7, 6, 5, 4, 3, 2};
+unsigned int downButton        = 0;
+unsigned int upButton          = 1;
+unsigned int recordButton      = 2;
+unsigned int printFilesButton  = 3;
+unsigned int deleteFilesButton = 4;
+unsigned int openCloseButton   = 5;
 bool keysPressed[]  = {false, false, false, false, false, false};
 
 
 // SD CARD
-int SDpin             = 10;
+unsigned int SDpin             = 10;
 String filenamePrefix = "group_data_";
 String filename       = "Undetermined.txt";
 bool isOpen           = false;
@@ -88,7 +88,7 @@ void loop()
   }else{ // IF NO SIGNAL DETECTED --> Manually Operated device
     
     // get button activity
-    for (int i = 0; i < numberOfButtons; i++) {
+    for (byte i = 0; i < numberOfButtons; i++) {
       keysPressed[i] = digitalRead(buttons[i]) == 1;
     }
   

@@ -2,18 +2,18 @@
 // in setup: See if a message waits in serial, if yes do serialCommunication mode
 void considerSerialProcedure(){
   String content = listenForSignal(); // try to listen for first message
-  if(content=="INITIATE"){ // if "INITIATE" found
+  if(content==F("INITIATE")){ // if "INITIATE" found
     recievedMessage = true;
     lcd.clear();
-    printToDisplay("SLAVE MODE",0,0);
-    printToDisplay("Serial Detected",0,1);
+    printToDisplay(F("SLAVE MODE"),0,0);
+    printToDisplay(F("Serial Detected"),0,1);
     delay(1000); 
     lcd.clear();
     timeAtStart = millis();
   }else{
     lcd.clear();
-    printToDisplay("MANUAL MODE",0,0);
-    printToDisplay("No Serial",0,1);
+    printToDisplay(F("MANUAL MODE"),0,0);
+    printToDisplay(F("No Serial"),0,1);
     delay(1000); 
     lcd.clear();
   }
@@ -29,9 +29,10 @@ String listenForSignal(){
   if (content != "") {
     return content;
   }else{
-    return "NOTHING";
+    return F("NOTHING");
   }
 }
+
 
 
 
@@ -53,22 +54,22 @@ void serialResponse(){
 
 void handleMessage(String msg){
 
-  if(msg=="RECORD TRUE"){
+  if(msg==F("RECORD TRUE")){
     record = true;
-  }else if(msg=="RECORD FALSE"){
+  }else if(msg==F("RECORD FALSE")){
     record = false;
-  }else if(msg=="RESET TIME"){
+  }else if(msg==F("RESET TIME")){
     timeAtStart = millis();
-  }else if(msg=="DELETE ALL"){
+  }else if(msg==F("DELETE ALL")){
     emptySDdirectory("/");
-  }else if(msg=="PRINT STORED"){
+  }else if(msg==F("PRINT STORED")){
     printFilesInDirectory("/");
-  }else if(msg=="TRANSFER ALL"){
+  }else if(msg==F("TRANSFER ALL")){
     transferAllFiles("/");
-  }else if(msg=="INCREASE RES"){
+  }else if(msg==F("INCREASE RES")){
     bitResolutionChoice += 1;
     bitResolutionChoice = (bitResolutionChoice+5)%5;
-  }else if(msg=="DECREASE RES"){
+  }else if(msg==F("DECREASE RES")){
     bitResolutionChoice -= 1;
     bitResolutionChoice = (bitResolutionChoice+5)%5;
   }
@@ -94,6 +95,7 @@ void broadcast(){
   }
   printToDisplay(String(temp)+" C",8,1);
 }
+
 
 
 
