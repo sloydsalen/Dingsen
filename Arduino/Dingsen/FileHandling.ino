@@ -107,7 +107,7 @@ void printFilesInDirectory(String directory){
     String nameOfFile = String(entry.name());
     printToDisplay("            ",0,1);
     printToDisplay(nameOfFile,0,1);
-    delay(1000);
+    delay(500);
 
     entry.close();
   }
@@ -123,9 +123,36 @@ void transferAllFiles(String directory){
     if (!entry) { break;} // no more files in directory
     
     String nameOfFile = String(entry.name());
+    printToDisplay(F("            "),0,1);
+    printToDisplay(entry.name(),0,1);
+    delay(400);
+    entry.close();
+    if(nameOfFile.substring(0,4)=="FILE"){
+      
+      printToDisplay(F("            "),0,1);
+      printToDisplay(nameOfFile,0,1);
+      delay(400);
+  
+      pushSDdata(nameOfFile);
+    }
+    
+  }
+  Serial.write("*END OF TRANSFER* \n");
+}
+
+/*
+void transferAllFiles(String directory){
+  File root = SD.open(directory);
+  root.rewindDirectory();
+  while (true) {
+    File entry =  root.openNextFile();
+    if (!entry) { break;} // no more files in directory
+    
+    String nameOfFile = String(entry.name());
+    Serial.write(entry.name());
     entry.close();
     
-    printToDisplay("            ",0,1);
+    printToDisplay(F("            "),0,1);
     printToDisplay(nameOfFile,0,1);
 
     pushSDdata(nameOfFile);
@@ -134,5 +161,4 @@ void transferAllFiles(String directory){
   Serial.write("*END OF TRANSFER* \n");
 }
 
-
-
+*/
