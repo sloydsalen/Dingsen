@@ -19,15 +19,15 @@ LiquidCrystal_I2C lcd(0x27, 16, 2); // Set the LCD I2C address
 
 // BUTTONS
 // define button pins
-unsigned int numberOfButtons   = 6;
-unsigned int buttons[]         = {7, 6, 5, 4, 3, 2};
+unsigned int numberOfButtons   = 4;
+unsigned int buttons[]         = {5, 6, 7, 8};
 unsigned int downButton        = 0;
 unsigned int upButton          = 1;
 unsigned int recordButton      = 2;
-unsigned int printFilesButton  = 3;
-unsigned int deleteFilesButton = 4;
-unsigned int openCloseButton   = 5;
-bool keysPressed[]  = {false, false, false, false, false, false};
+//unsigned int printFilesButton  = 3;
+//unsigned int deleteFilesButton = 4;
+unsigned int openCloseButton   = 3;
+bool keysPressed[]  = {false, false, false, false};//, false, false};
 
 
 // SD CARD
