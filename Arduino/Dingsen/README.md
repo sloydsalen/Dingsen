@@ -92,3 +92,7 @@ that initializes the device for a session with two output values, demands succes
 - [Subprocess](https://docs.python.org/2/library/subprocess.html) (native)
 - [Sys](https://docs.python.org/2/library/sys.html) (native)
 -->
+
+### Drivers for Arduino Nano
+Some operating systems are unable to detect the Arduino Nano due to driver issues. 
+Solution: Download the driver for your OS from [this link](http://www.wch.cn/download/CH341SER_ZIP.html), install and restart the computer.
